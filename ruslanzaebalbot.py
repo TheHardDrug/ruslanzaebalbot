@@ -9,7 +9,6 @@ def startCommand(bot, update):
 def textMessage(bot, update):
     request = apiai.ApiAI('78bd1d6c16e448d29a476bd14ae64fb9').text_request() # Токен API к Dialogflow
     request.lang = 'ru' # На каком языке будет послан запрос
-    request.session_id = 'BatlabAIBot' # ID Сессии диалога (нужно, чтобы потом учить бота)
     request.query = update.message.text # Посылаем запрос к ИИ с сообщением от юзера
     responseJson = json.loads(request.getresponse().read().decode('utf-8'))
     response = responseJson['result']['fulfillment']['speech'] # Разбираем JSON и вытаскиваем ответ
